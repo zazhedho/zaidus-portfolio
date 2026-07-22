@@ -26,13 +26,6 @@ const t = {
     projectsTitleLabel: '02 / Project terpilih',
     experienceLabel: '03 / Pengalaman',
     experienceTitle: 'Systems that\nhold up.',
-    experienceRole: 'Software Engineer — Backend',
-    experienceSummary: 'Merancang dan menjaga backend berbasis Go untuk workload terdistribusi, dengan fokus pada performa, reliability, dan operasional yang sederhana.',
-    experiencePoints: [
-      'Mengoptimalkan query SQL, index, dan join untuk meningkatkan performa.',
-      'Menerapkan background processing, Redis caching, dan load balancing.',
-      'Merancang microservices bersama tim product, business, infra, dan operations.',
-    ],
     capabilitiesLabel: 'Kapabilitas utama',
     educationLabel: 'Pendidikan',
     educationValue: 'Bachelor of Physics',
@@ -62,13 +55,6 @@ const t = {
     projectsTitleLabel: '02 / Selected projects',
     experienceLabel: '03 / Experience',
     experienceTitle: 'Systems that\nhold up.',
-    experienceRole: 'Software Engineer — Backend',
-    experienceSummary: 'Designing and maintaining Go backends for distributed workloads, with a focus on performance, reliability, and straightforward operations.',
-    experiencePoints: [
-      'Optimized SQL queries, indexes, and joins to improve performance.',
-      'Implemented background processing, Redis caching, and load balancing.',
-      'Designed microservices with product, business, infrastructure, and operations teams.',
-    ],
     capabilitiesLabel: 'Core capabilities',
     educationLabel: 'Education',
     educationValue: 'Bachelor of Physics',
@@ -91,6 +77,39 @@ const capabilities = [
   'Redis & server-side caching',
   'RabbitMQ & async processing',
   'Docker & load balancing',
+]
+
+const workExperience = [
+  {
+    role: { id: 'Backend Developer', en: 'Backend Developer' },
+    company: 'PT Bank Rakyat Indonesia (Persero) Tbk',
+    period: '11.2025—PRESENT',
+    location: { id: 'Jakarta, Indonesia · On-site', en: 'Jakarta, Indonesia · On-site' },
+  },
+  {
+    role: { id: 'Software Engineer — Backend Golang', en: 'Software Engineer — Backend Golang' },
+    company: 'PT Sprint Asia Technology · Full-time',
+    period: '12.2022—11.2025',
+    location: { id: 'Jakarta Selatan, Indonesia · Hybrid', en: 'South Jakarta, Indonesia · Hybrid' },
+    points: {
+      id: [
+        'Mengembangkan dan mengimplementasikan aplikasi Go.',
+        'Melakukan troubleshooting dan debugging pada aplikasi.',
+        'Berperan dalam keputusan arsitektur dan desain microservices terdistribusi.',
+        'Berkolaborasi dengan tim product, business, infrastructure, dan operations.',
+        'Memelihara dan menyesuaikan aplikasi yang sudah berjalan.',
+        'Menerjemahkan kebutuhan software menjadi sistem yang stabil dan berperforma tinggi.',
+      ],
+      en: [
+        'Developed and implemented Go applications.',
+        'Troubleshot and debugged application code.',
+        'Contributed to architecture and design decisions for distributed microservices.',
+        'Collaborated with product, business, infrastructure, and operations teams.',
+        'Maintained and adapted existing applications.',
+        'Translated software requirements into stable, high-performance systems.',
+      ],
+    },
+  },
 ]
 
 function ProjectVisual({ project }) {
@@ -159,6 +178,15 @@ export default function App() {
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [])
 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`)
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`)
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   const closeMenu = () => setMenuOpen(false)
   const toggleLang = () => {
     setLang(lang === 'id' ? 'en' : 'id')
@@ -166,7 +194,9 @@ export default function App() {
   }
 
   return (
-    <div className="site-shell">
+    <>
+      <div className="cursor-glow" aria-hidden="true" />
+      <div className="site-shell">
       <header className="topbar">
         <a className="brand" href="#top" aria-label="Kembali ke atas" onClick={closeMenu}>
           <span className="brand-dot" />
@@ -244,18 +274,24 @@ export default function App() {
           </div>
 
           <div className="experience-grid">
-            <article className="experience-role">
-              <div className="experience-meta">
-                <span>01 / WORK</span>
-                <span>12.2022—PRESENT</span>
-              </div>
-              <h3>{dict.experienceRole}</h3>
-              <p className="experience-company">PT Sprint Asia Technology</p>
-              <p className="experience-summary">{dict.experienceSummary}</p>
-              <ol className="experience-points">
-                {dict.experiencePoints.map((point) => <li key={point}>{point}</li>)}
-              </ol>
-            </article>
+            <div className="experience-list">
+              {workExperience.map((job, index) => (
+                <article className="experience-role" key={job.company}>
+                  <div className="experience-meta">
+                    <span>{String(index + 1).padStart(2, '0')} / WORK</span>
+                    <span>{job.period}</span>
+                  </div>
+                  <h3>{job.role[lang]}</h3>
+                  <p className="experience-company">{job.company}</p>
+                  <p className="experience-location">{job.location[lang]}</p>
+                  {job.points && (
+                    <ol className="experience-points">
+                      {job.points[lang].map((point) => <li key={point}>{point}</li>)}
+                    </ol>
+                  )}
+                </article>
+              ))}
+            </div>
 
             <aside className="career-sidebar">
               <div className="career-block">
@@ -292,5 +328,6 @@ export default function App() {
         <a href="#top">{dict.footerBackToTop}</a>
       </footer>
     </div>
+    </>
   )
 }
