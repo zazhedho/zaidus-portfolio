@@ -42,7 +42,8 @@ const t = {
     contactLabel: '04 / Selanjutnya',
     contactTitle: 'Punya ide yang\nlayak dirilis?',
     contactAction: 'Mulai percakapan',
-    projectLink: 'Kunjungi project',
+    liveProject: 'Live Site',
+    sourceCode: 'Source Code',
     footerBackToTop: 'Kembali ke atas ↑',
   },
   en: {
@@ -77,7 +78,8 @@ const t = {
     contactLabel: '04 / What\'s next',
     contactTitle: 'Got an idea\nworth shipping?',
     contactAction: 'Start a conversation',
-    projectLink: 'Visit project',
+    liveProject: 'Live Site',
+    sourceCode: 'Source Code',
     footerBackToTop: 'Back to top ↑',
   }
 }
@@ -105,10 +107,13 @@ function ProjectVisual({ project }) {
 
 function ProjectItem({ project, lang }) {
   const dict = t[lang]
+  const primaryUrl = project.productionUrl || project.repositoryUrl
   return (
     <article className={`project ${project.featured ? 'project-featured' : ''}`}>
-      <a href={project.url} target="_blank" rel="noreferrer" aria-label={`Buka ${project.name}`}>
-        <ProjectVisual project={project} />
+      <div className="project-inner">
+        <a className="project-visual-link" href={primaryUrl} target="_blank" rel="noreferrer" aria-label={`${project.productionUrl ? dict.liveProject : dict.sourceCode}: ${project.name}`}>
+          <ProjectVisual project={project} />
+        </a>
         <div className="project-copy">
           <div className="project-meta">
             <span>{project.number}</span>
@@ -117,9 +122,18 @@ function ProjectItem({ project, lang }) {
           </div>
           <h3>{project.name}</h3>
           <p>{project.description[lang]}</p>
-          <span className="project-link">{dict.projectLink} <Arrow diagonal /></span>
+          <div className="project-actions">
+            {project.productionUrl && (
+              <a className="project-link" href={project.productionUrl} target="_blank" rel="noreferrer">
+                {dict.liveProject} <Arrow diagonal />
+              </a>
+            )}
+            <a className="project-link" href={project.repositoryUrl} target="_blank" rel="noreferrer">
+              {dict.sourceCode} <Arrow diagonal />
+            </a>
+          </div>
         </div>
-      </a>
+      </div>
     </article>
   )
 }
@@ -196,6 +210,17 @@ export default function App() {
           <p className="section-label">{dict.approachTitle}</p>
           <div className="manifesto-content">
             <p className="manifesto-copy">{dict.approachDescPre}<em>{dict.approachDescEm}</em>{dict.approachDescPost}</p>
+            <figure className="profile-portrait">
+              <img
+                src="/profile-zaidus.avif"
+                alt="Zaidus Zhuhur, Backend Engineer"
+                width="800"
+                height="1212"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>ZAIDUS ZHUHUR / BACKEND ENGINEER</figcaption>
+            </figure>
             <p className="manifesto-stack">{dict.approachStack}</p>
           </div>
         </section>

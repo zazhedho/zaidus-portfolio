@@ -27,16 +27,16 @@ Landing page editorial milik **Zaidus Zhuhur** untuk mengarsipkan produk digital
 
 ## Project
 
-| # | Project | Jenis | Tahun | Tautan |
-| :-: | :--- | :--- | :-: | :---: |
-| 01 | **3ZA Digital** | Social Commerce Platform | 2026 | [Buka ↗](https://digital.zzaz.tech/) |
-| 02 | **Yourz Itinerary** | Travel Planner | 2026 | [Buka ↗](https://yourz-itinerary.vercel.app/) |
-| 03 | **Yourz Gift** | Digital Commerce | 2026 | [Buka ↗](https://gift.imyourz.com/) |
-| 04 | **Vendor Management System** | Operations System | 2026 | [Buka ↗](https://vms-astrantb.online/) |
-| 05 | **Songket Dashboard** | Data Dashboard | 2026 | [Buka ↗](https://songketdashboard.com/) |
-| 06 | **Location Service** | Public API & Explorer | 2026 | [Buka ↗](https://location-service-do.vercel.app/) |
-| 07 | **Anniversary Site** | Interactive Experience | 2026 | [Buka ↗](https://zaiduszh.tech/) |
-| 08 | **Safety Riding** | Operations Platform | 2025 | [GitHub ↗](https://github.com/zazhedho/safety-riding) |
+| # | Project | Production | Source |
+| :-: | :--- | :---: | :---: |
+| 01 | **3ZA Digital** | [Live ↗](https://digital.zzaz.tech/) | [GitHub ↗](https://github.com/zazhedho/3za-digital) |
+| 02 | **Yourz Itinerary** | [Live ↗](https://yourz-itinerary.vercel.app/) | [GitHub ↗](https://github.com/zazhedho/yourz-itinerary) |
+| 03 | **Yourz Gift** | [Live ↗](https://gift.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/yourz-gift) |
+| 04 | **Vendor Management System** | [Live ↗](https://vms-astrantb.online/) | [GitHub ↗](https://github.com/zazhedho/vendor-management-system) |
+| 05 | **Songket Dashboard** | [Live ↗](https://songketdashboard.com/) | [GitHub ↗](https://github.com/zazhedho/service-songket) |
+| 06 | **Location Service** | [Live ↗](https://location-service-do.vercel.app/) | [GitHub ↗](https://github.com/zazhedho/location-service) |
+| 07 | **Anniversary Site** | [Live ↗](https://zaiduszh.tech/) | [GitHub ↗](https://github.com/zazhedho/anniversary-site) |
+| 08 | **Safety Riding** | — | [GitHub ↗](https://github.com/zazhedho/safety-riding) |
 
 ## Menjalankan lokal
 
@@ -73,7 +73,8 @@ Edit [`src/projects.js`](src/projects.js), lalu tambahkan object berikut:
   kind: 'Kategori',
   year: '2026',
   description: 'Deskripsi singkat dan jelas.',
-  url: 'https://project.example.com',
+  productionUrl: 'https://project.example.com',
+  repositoryUrl: 'https://github.com/username/project',
   palette: 'vermillion',
   mark: 'NP',
 }

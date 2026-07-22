@@ -10,7 +10,8 @@ export const projects = [
       id: 'Platform social commerce dengan wallet, pembayaran, katalog layanan, dan operasional berbasis permission.',
       en: 'A social commerce platform with wallets, payments, service catalogs, and permission-based operations.'
     },
-    url: 'https://digital.zzaz.tech/',
+    productionUrl: 'https://digital.zzaz.tech/',
+    repositoryUrl: 'https://github.com/zazhedho/3za-digital',
     palette: 'vermillion',
     mark: '3ZA',
     featured: true,
@@ -24,7 +25,8 @@ export const projects = [
       id: 'Ruang kerja untuk menyusun rencana perjalanan tanpa spreadsheet yang berantakan.',
       en: 'A workspace to organize travel plans without messy spreadsheets.'
     },
-    url: 'https://yourz-itinerary.vercel.app/',
+    productionUrl: 'https://yourz-itinerary.vercel.app/',
+    repositoryUrl: 'https://github.com/zazhedho/yourz-itinerary',
     palette: 'cobalt',
     mark: 'YI',
   },
@@ -37,7 +39,8 @@ export const projects = [
       id: 'Pengalaman memilih hadiah yang terasa personal, tenang, dan tidak transaksional.',
       en: 'A gift-picking experience that feels personal, calm, and non-transactional.'
     },
-    url: 'https://gift.imyourz.com/',
+    productionUrl: 'https://gift.imyourz.com/',
+    repositoryUrl: 'https://github.com/zazhedho/yourz-gift',
     palette: 'citron',
     mark: 'YG',
   },
@@ -50,7 +53,8 @@ export const projects = [
       id: 'Sistem terpusat untuk mengelola vendor, akses pengguna, dan proses operasional perusahaan.',
       en: 'A centralized system for managing vendors, user access, and company operations.'
     },
-    url: 'https://vms-astrantb.online/',
+    productionUrl: 'https://vms-astrantb.online/',
+    repositoryUrl: 'https://github.com/zazhedho/vendor-management-system',
     palette: 'lavender',
     mark: 'VMS',
   },
@@ -63,7 +67,8 @@ export const projects = [
       id: 'Dashboard untuk menyajikan data Songket secara ringkas, terstruktur, dan mudah dipantau.',
       en: 'A dashboard that presents Songket data in a concise, structured, and monitorable format.'
     },
-    url: 'https://songketdashboard.com/',
+    productionUrl: 'https://songketdashboard.com/',
+    repositoryUrl: 'https://github.com/zazhedho/service-songket',
     palette: 'cobalt',
     mark: 'SD',
   },
@@ -76,7 +81,8 @@ export const projects = [
       id: 'API wilayah Indonesia yang rapi, cepat, dan mudah dijelajahi langsung dari browser.',
       en: 'A neat, fast, and easy-to-explore Indonesian region API straight from your browser.'
     },
-    url: 'https://location-service-do.vercel.app/',
+    productionUrl: 'https://location-service-do.vercel.app/',
+    repositoryUrl: 'https://github.com/zazhedho/location-service',
     palette: 'citron',
     mark: 'LOC',
   },
@@ -89,7 +95,8 @@ export const projects = [
       id: 'Pengalaman digital personal untuk merayakan momen anniversary melalui cerita dan interaksi.',
       en: 'A personal digital experience celebrating an anniversary through storytelling and interaction.'
     },
-    url: 'https://zaiduszh.tech/',
+    productionUrl: 'https://zaiduszh.tech/',
+    repositoryUrl: 'https://github.com/zazhedho/anniversary-site',
     palette: 'vermillion',
     mark: 'ANV',
   },
@@ -102,7 +109,7 @@ export const projects = [
       id: 'Sistem operasional pelatihan berkendara dengan alur kerja yang jelas untuk setiap peran.',
       en: 'A riding training operational system with clear workflows for every role.'
     },
-    url: 'https://github.com/zazhedho/safety-riding',
+    repositoryUrl: 'https://github.com/zazhedho/safety-riding',
     palette: 'lavender',
     mark: 'SR',
   },
