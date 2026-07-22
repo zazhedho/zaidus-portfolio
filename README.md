@@ -9,7 +9,7 @@
 [![Build](https://img.shields.io/badge/build-passing-F04B23?style=flat-square)](#menjalankan-lokal)
 [![License](https://img.shields.io/badge/license-personal-D6E337?style=flat-square)](#lisensi)
 
-[Lihat Project](#project) · [Mulai](#menjalankan-lokal) · [Kustomisasi](#kustomisasi) · [Kontak](#kontak)
+[Repository](https://github.com/zazhedho/zaidus-portfolio) · [Lihat Project](#project) · [Mulai](#menjalankan-lokal) · [Kustomisasi](#kustomisasi) · [Kontak](#kontak)
 
 </div>
 
@@ -29,10 +29,14 @@ Landing page editorial milik **Zaidus Zhuhur** untuk mengarsipkan produk digital
 
 | # | Project | Jenis | Tahun | Tautan |
 | :-: | :--- | :--- | :-: | :---: |
-| 01 | **Location Service** | Public API & Explorer | 2026 | [Buka ↗](https://location-service-do.vercel.app/) |
-| 02 | **Yourz Itinerary** | Travel Planner | 2026 | [Buka ↗](https://github.com/zazhedho/yourz-itinerary) |
-| 03 | **Yourz Gift** | Digital Commerce | 2026 | [Buka ↗](https://github.com/zazhedho/yourz-gift) |
-| 04 | **Safety Riding** | Operations Platform | 2025 | [Buka ↗](https://github.com/zazhedho/safety-riding) |
+| 01 | **3ZA Digital** | Social Commerce Platform | 2026 | [Buka ↗](https://digital.zzaz.tech/) |
+| 02 | **Yourz Itinerary** | Travel Planner | 2026 | [Buka ↗](https://yourz-itinerary.vercel.app/) |
+| 03 | **Yourz Gift** | Digital Commerce | 2026 | [Buka ↗](https://gift.imyourz.com/) |
+| 04 | **Vendor Management System** | Operations System | 2026 | [Buka ↗](https://vms-astrantb.online/) |
+| 05 | **Songket Dashboard** | Data Dashboard | 2026 | [Buka ↗](https://songketdashboard.com/) |
+| 06 | **Location Service** | Public API & Explorer | 2026 | [Buka ↗](https://location-service-do.vercel.app/) |
+| 07 | **Anniversary Site** | Interactive Experience | 2026 | [Buka ↗](https://zaiduszh.tech/) |
+| 08 | **Safety Riding** | Operations Platform | 2025 | [GitHub ↗](https://github.com/zazhedho/safety-riding) |
 
 ## Menjalankan lokal
 

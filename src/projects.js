@@ -1,30 +1,30 @@
 // Edit file ini untuk menambah, menghapus, atau mengubah project.
-// `url` dapat diarahkan ke production URL masing-masing project.
+// Gunakan production URL bila tersedia; fallback ke repository GitHub.
 export const projects = [
   {
     number: '01',
-    name: 'Location Service',
-    kind: { id: 'Public API & Explorer', en: 'Public API & Explorer' },
+    name: '3ZA Digital',
+    kind: { id: 'Platform Social Commerce', en: 'Social Commerce Platform' },
     year: '2026',
     description: {
-      id: 'API wilayah Indonesia yang rapi, cepat, dan mudah dijelajahi langsung dari browser.',
-      en: 'A neat, fast, and easy-to-explore Indonesian region API straight from your browser.'
+      id: 'Platform social commerce dengan wallet, pembayaran, katalog layanan, dan operasional berbasis permission.',
+      en: 'A social commerce platform with wallets, payments, service catalogs, and permission-based operations.'
     },
-    url: 'https://location-service-do.vercel.app/',
+    url: 'https://digital.zzaz.tech/',
     palette: 'vermillion',
-    mark: 'LOC',
+    mark: '3ZA',
     featured: true,
   },
   {
     number: '02',
     name: 'Yourz Itinerary',
-    kind: { id: 'Travel Planner', en: 'Travel Planner' },
+    kind: { id: 'Perencana Perjalanan', en: 'Travel Planner' },
     year: '2026',
     description: {
       id: 'Ruang kerja untuk menyusun rencana perjalanan tanpa spreadsheet yang berantakan.',
       en: 'A workspace to organize travel plans without messy spreadsheets.'
     },
-    url: 'https://github.com/zazhedho/yourz-itinerary',
+    url: 'https://yourz-itinerary.vercel.app/',
     palette: 'cobalt',
     mark: 'YI',
   },
@@ -37,14 +37,66 @@ export const projects = [
       id: 'Pengalaman memilih hadiah yang terasa personal, tenang, dan tidak transaksional.',
       en: 'A gift-picking experience that feels personal, calm, and non-transactional.'
     },
-    url: 'https://github.com/zazhedho/yourz-gift',
+    url: 'https://gift.imyourz.com/',
     palette: 'citron',
     mark: 'YG',
   },
   {
     number: '04',
+    name: 'Vendor Management System',
+    kind: { id: 'Sistem Operasional', en: 'Operations System' },
+    year: '2026',
+    description: {
+      id: 'Sistem terpusat untuk mengelola vendor, akses pengguna, dan proses operasional perusahaan.',
+      en: 'A centralized system for managing vendors, user access, and company operations.'
+    },
+    url: 'https://vms-astrantb.online/',
+    palette: 'lavender',
+    mark: 'VMS',
+  },
+  {
+    number: '05',
+    name: 'Songket Dashboard',
+    kind: { id: 'Dashboard Data', en: 'Data Dashboard' },
+    year: '2026',
+    description: {
+      id: 'Dashboard untuk menyajikan data Songket secara ringkas, terstruktur, dan mudah dipantau.',
+      en: 'A dashboard that presents Songket data in a concise, structured, and monitorable format.'
+    },
+    url: 'https://songketdashboard.com/',
+    palette: 'cobalt',
+    mark: 'SD',
+  },
+  {
+    number: '06',
+    name: 'Location Service',
+    kind: { id: 'Public API & Explorer', en: 'Public API & Explorer' },
+    year: '2026',
+    description: {
+      id: 'API wilayah Indonesia yang rapi, cepat, dan mudah dijelajahi langsung dari browser.',
+      en: 'A neat, fast, and easy-to-explore Indonesian region API straight from your browser.'
+    },
+    url: 'https://location-service-do.vercel.app/',
+    palette: 'citron',
+    mark: 'LOC',
+  },
+  {
+    number: '07',
+    name: 'Anniversary Site',
+    kind: { id: 'Pengalaman Interaktif', en: 'Interactive Experience' },
+    year: '2026',
+    description: {
+      id: 'Pengalaman digital personal untuk merayakan momen anniversary melalui cerita dan interaksi.',
+      en: 'A personal digital experience celebrating an anniversary through storytelling and interaction.'
+    },
+    url: 'https://zaiduszh.tech/',
+    palette: 'vermillion',
+    mark: 'ANV',
+  },
+  {
+    number: '08',
     name: 'Safety Riding',
-    kind: { id: 'Operations Platform', en: 'Operations Platform' },
+    kind: { id: 'Platform Operasional', en: 'Operations Platform' },
     year: '2025',
     description: {
       id: 'Sistem operasional pelatihan berkendara dengan alur kerja yang jelas untuk setiap peran.',
