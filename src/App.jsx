@@ -39,7 +39,7 @@ const t = {
     capabilitiesLabel: 'Kapabilitas utama',
     educationLabel: 'Pendidikan',
     educationValue: 'Sarjana Fisika',
-    educationPlace: 'Universitas Mataram · 2015—2020',
+    educationPlace: 'Universitas Mataram · 2015—2019',
     languagesLabel: 'Bahasa',
     languagesValue: 'Bahasa Indonesia — Penutur Asli\nBahasa Inggris — Menengah',
     contactLabel: '04 / Selanjutnya',
@@ -80,7 +80,7 @@ const t = {
     capabilitiesLabel: 'Core capabilities',
     educationLabel: 'Education',
     educationValue: 'Bachelor of Physics',
-    educationPlace: 'Mataram University · 2015—2020',
+    educationPlace: 'Mataram University · 2015—2019',
     languagesLabel: 'Languages',
     languagesValue: 'Indonesian — Native\nEnglish — Intermediate',
     contactLabel: '04 / What\'s next',
@@ -120,7 +120,7 @@ const educationHistory = [
   },
   {
     title: { id: 'Sarjana Fisika', en: 'Bachelor of Physics' },
-    institution: { id: 'Universitas Mataram · 2015 — 2020', en: 'Mataram University · 2015 — 2020' },
+    institution: { id: 'Universitas Mataram · 2015 — 2019', en: 'Mataram University · 2015 — 2019' },
   },
 ]
 
