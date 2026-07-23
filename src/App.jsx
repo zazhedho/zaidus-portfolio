@@ -30,7 +30,7 @@ const t = {
     projectsTitle: 'Sistem nyata yang\ntelah dirilis.',
     projectCountLabel: 'PROYEK',
     experienceLabel: '03 / Pengalaman',
-    experienceTitle: 'Sistem yang\ntahan uji.',
+    experienceTitle: 'Pengalaman\nprofesional.',
     experienceYears: '2022 — SEKARANG',
     workLabel: 'PEKERJAAN',
     heroStampLine1: 'AVAILABLE FOR WORK',
@@ -71,7 +71,7 @@ const t = {
     projectsTitle: 'Built, shipped,\nand in the wild.',
     projectCountLabel: 'PROJECTS',
     experienceLabel: '03 / Experience',
-    experienceTitle: 'Systems that\nhold up.',
+    experienceTitle: 'Professional\nexperience.',
     experienceYears: '2022 — PRESENT',
     workLabel: 'WORK',
     heroStampLine1: 'AVAILABLE FOR WORK',
@@ -112,6 +112,17 @@ const capabilities = {
     'Docker & load balancing',
   ]
 }
+
+const educationHistory = [
+  {
+    title: { id: 'Backend Golang Developer', en: 'Backend Golang Developer' },
+    institution: { id: 'Fazztrack Bootcamp · Juni 2022 — Okt 2022', en: 'Fazztrack Bootcamp · June 2022 — Oct 2022' },
+  },
+  {
+    title: { id: 'Sarjana Fisika', en: 'Bachelor of Physics' },
+    institution: { id: 'Universitas Mataram · 2015 — 2020', en: 'Mataram University · 2015 — 2020' },
+  },
+]
 
 const workExperience = [
   {
@@ -194,7 +205,7 @@ function ProjectItem({ project, lang }) {
 
 export default function App() {
   const [time, setTime] = useState('')
-  const [lang, setLang] = useState('id') // 'id' or 'en'
+  const [lang, setLang] = useState('en') // 'en' or 'id'
   const [menuOpen, setMenuOpen] = useState(false)
   const dict = t[lang]
 
@@ -341,8 +352,14 @@ export default function App() {
               </div>
               <div className="career-block">
                 <p className="career-label">{dict.educationLabel}</p>
-                <strong>{dict.educationValue}</strong>
-                <span>{dict.educationPlace}</span>
+                <div className="education-list" style={{ display: 'grid', gap: '16px' }}>
+                  {educationHistory.map((item) => (
+                    <div className="education-item" key={item.title.en}>
+                      <strong>{item.title[lang]}</strong>
+                      <span>{item.institution[lang]}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="career-block">
                 <p className="career-label">{dict.languagesLabel}</p>
