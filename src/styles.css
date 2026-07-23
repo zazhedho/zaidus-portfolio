@@ -106,7 +106,9 @@ a { color: inherit; text-decoration: none; }
 .brand:hover { opacity: 0.8; }
 .brand-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 10px var(--orange); }
 .topbar-note { grid-column: 2; justify-self: center; text-align: center; color: rgba(255,255,255,0.6); }
-.topbar nav { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: clamp(12px, 1.5vw, 26px); }
+.topbar-right { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 26px; }
+.topbar nav { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 26px); }
+.topbar nav a span { display: none; }
 .topbar nav a, .topbar nav button, footer a { position: relative; transition: color 0.3s; }
 .topbar nav a:hover, .topbar nav button:hover, footer a:hover { color: var(--orange); }
 .topbar nav a::after, footer a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
@@ -325,39 +327,83 @@ footer a { color: #fff; }
 @media (max-width: 760px) {
   main section[id] { scroll-margin-top: 88px; }
   .site-shell { padding: 0 16px; }
-  .topbar { height: 72px; display: flex; justify-content: space-between; margin: 0 -16px; padding: 0 16px; }
+  .topbar { height: 72px; display: flex; justify-content: space-between; align-items: center; margin: 0 -16px; padding: 0 16px; position: relative; }
   .topbar-note { display: none; }
-  .menu-toggle { display: none !important; }
-  .topbar nav { position: static; display: flex; flex-direction: row; background: transparent; padding: 0; border: none; gap: 14px; align-items: center; width: auto; }
-  .topbar nav a, .topbar nav .language-toggle { padding: 0; border: none; width: auto; font-size: 10px; }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .menu-toggle { display: inline-flex !important; color: var(--orange) !important; font-weight: 600 !important; font-size: 11px; letter-spacing: 0.06em; cursor: pointer; }
+  .topbar nav {
+    position: absolute;
+    top: 71px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 20px 24px;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(5, 5, 5, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    z-index: 100;
+  }
+  .topbar nav.nav-open {
+    display: flex;
+    animation: menu-slide-down 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @keyframes menu-slide-down {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .topbar nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.05em;
+  }
+  .topbar nav a span {
+    display: inline;
+    color: var(--orange);
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+  }
+  .topbar nav a:last-child {
+    border-bottom: none;
+  }
   .hero { min-height: calc(100svh - 72px); padding-top: 20px; position: relative; }
-  .hero h1 { font-size: clamp(52px, 18vw, 116px); line-height: .82; }
+  .hero h1 { font-size: clamp(48px, 16vw, 100px); line-height: .84; }
   .hero-line { padding-left: 0; position: relative; }
-  .hero-stamp { display: grid; position: absolute; right: 0; top: -50px; width: 70px; height: 70px; font-size: 6px; }
+  .hero-stamp { display: grid; position: absolute; right: 0; top: -24px; width: 68px; height: 68px; font-size: 5.5px; }
   .hero-footer { grid-template-columns: 1fr auto; align-items: end; gap: 16px; margin-bottom: 24px; }
   .circle-link { display: grid; width: 48px; height: 48px; }
-  .manifesto { grid-template-columns: 1fr; gap: 40px; padding: 70px 0; }
-  .manifesto-content { grid-template-columns: 1fr; }
-  .profile-portrait { width: 78%; justify-self: end; }
-  .manifesto-copy { font-size: clamp(28px, 8vw, 42px); }
-  .section-heading { grid-template-columns: 1fr auto; margin-bottom: 40px; gap: 16px; }
-  .section-heading h2 { grid-column: 1 / -1; grid-row: 2; margin-top: 12px; font-size: 38px; }
-  .project-grid { grid-template-columns: 1fr; gap: 28px; }
+  .manifesto { grid-template-columns: 1fr; gap: 36px; padding: 60px 0; }
+  .manifesto-content { grid-template-columns: 1fr; gap: 28px; }
+  .profile-portrait { width: 100%; justify-self: center; }
+  .manifesto-copy { font-size: clamp(26px, 7.5vw, 40px); }
+  .section-heading { grid-template-columns: 1fr auto; margin-bottom: 36px; gap: 12px; }
+  .section-heading h2 { grid-column: 1 / -1; grid-row: 2; margin-top: 8px; font-size: 34px; }
+  .project-grid { grid-template-columns: 1fr; gap: 24px; }
   .project { padding: 18px; border-radius: 16px; }
   .project-featured { grid-column: auto; }
   .project-featured > .project-inner { display: block; }
-  .project-visual, .project:not(.project-featured) .project-visual { aspect-ratio: 1.2; border-radius: 10px; }
-  .visual-mark, .project:not(.project-featured) .visual-mark { font-size: 26vw; }
+  .project-visual, .project:not(.project-featured) .project-visual { aspect-ratio: 1.25; border-radius: 10px; }
+  .visual-mark, .project:not(.project-featured) .visual-mark { font-size: 24vw; }
   .project-featured .project-copy { display: block; padding-top: 20px; }
-  .project h3, .project-featured h3 { margin-top: 20px; font-size: 28px; }
+  .project h3, .project-featured h3 { margin-top: 18px; font-size: 26px; }
   .project p { font-size: 14px; line-height: 1.5; }
-  .experience-grid { grid-template-columns: 1fr; gap: 60px; }
-  .experience-role h3 { margin-top: 40px; font-size: 36px; }
+  .experience-grid { grid-template-columns: 1fr; gap: 50px; }
+  .experience-role h3 { margin-top: 36px; font-size: 32px; }
   .career-sidebar { border-left: 0; padding-left: 0; }
-  .contact-main { grid-template-columns: 1fr; min-height: 400px; padding-top: 60px; }
-  .contact-main h2 { font-size: 42px; }
+  .contact-main { grid-template-columns: 1fr; min-height: 380px; padding-top: 50px; }
+  .contact-main h2 { font-size: 38px; }
   .contact-main > a { justify-self: start; width: 100%; }
-  footer span:nth-child(2) { display: none; }
+  footer { font-size: 8px; gap: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -238,26 +238,28 @@ export default function App() {
           ZAIDUS / WORKS
         </a>
         <div className="topbar-note" style={{ whiteSpace: 'pre-line' }}>{dict.topbarNote}</div>
-        <button
-          className="menu-toggle"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? dict.menuClose : dict.menuOpen}
-        </button>
-        <nav id="primary-navigation" className={menuOpen ? 'nav-open' : ''} aria-label="Navigasi utama">
-          <a href="#about" onClick={closeMenu}>{dict.navAbout}</a>
-          <a href="#projects" onClick={closeMenu}>{dict.navProjects}</a>
-          <a href="#experience" onClick={closeMenu}>{dict.navExperience}</a>
-          <a href="#contact" onClick={closeMenu}>{dict.navContact}</a>
+        <div className="topbar-right">
+          <nav id="primary-navigation" className={menuOpen ? 'nav-open' : ''} aria-label="Navigasi utama">
+            <a href="#about" onClick={closeMenu}><span>01</span> {dict.navAbout}</a>
+            <a href="#projects" onClick={closeMenu}><span>02</span> {dict.navProjects}</a>
+            <a href="#experience" onClick={closeMenu}><span>03</span> {dict.navExperience}</a>
+            <a href="#contact" onClick={closeMenu}><span>04</span> {dict.navContact}</a>
+          </nav>
           <button className="language-toggle" type="button" onClick={toggleLang} aria-label={`Switch language to ${lang === 'id' ? 'English' : 'Bahasa Indonesia'}`}>
             <span className={lang === 'id' ? 'lang-active' : ''}>ID</span>
             <span className="lang-sep">/</span>
             <span className={lang === 'en' ? 'lang-active' : ''}>EN</span>
           </button>
-        </nav>
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? dict.menuClose : dict.menuOpen}
+          </button>
+        </div>
       </header>
 
       <main id="top">
