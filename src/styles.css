@@ -167,7 +167,39 @@ a { color: inherit; text-decoration: none; }
 @keyframes spin { 100% { transform: rotate(368deg); } }
 
 .hero-footer { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; border-top: 1px solid var(--line); padding-top: 18px; }
-.hero-footer p { max-width: 520px; margin: 0 0 8px; font-size: clamp(15px, 1.25vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.7); }
+.hero-footer-copy { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.hero-footer p { max-width: 520px; margin: 0; font-size: clamp(15px, 1.25vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.7); }
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(240, 75, 35, 0.12);
+  border: 1px solid rgba(240, 75, 35, 0.35);
+  border-radius: 30px;
+  color: #fff;
+  font: 500 10.5px/1 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-cta-button:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(240, 75, 35, 0.4);
+}
+.hero-cta-button .arrow {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+.hero-cta-button:hover .arrow {
+  transform: translate(3px, -3px);
+}
 .circle-link { width: 58px; height: 58px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; transform: rotate(90deg); transition: all .35s cubic-bezier(0.2, 0.8, 0.2, 1); background: var(--glass-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .circle-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); transform: rotate(0deg); }
 .arrow { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: miter; }
@@ -177,9 +209,58 @@ a { color: inherit; text-decoration: none; }
 .manifesto-content { display: grid; grid-template-columns: minmax(0, 1fr) clamp(220px, 22vw, 340px); align-items: end; gap: 38px 48px; }
 .manifesto-copy { max-width: 1040px; margin: 0; font-size: clamp(32px, 4.15vw, 66px); line-height: 1.08; letter-spacing: -.045em; color: rgba(255,255,255,0.9); }
 .manifesto-copy em { font-family: 'Newsreader', serif; font-weight: 400; color: #fff; }
-.profile-portrait { margin: 0; }
-.profile-portrait img { display: block; width: 100%; height: auto; border: 1px solid var(--glass-border); filter: saturate(.9) contrast(1.04); }
-.profile-portrait figcaption { margin-top: 10px; color: rgba(255,255,255,.45); font: 500 8px/1.4 'DM Mono', monospace; letter-spacing: .08em; }
+.profile-portrait { 
+  margin: 0; 
+  background: var(--glass-bg); 
+  border: 1px solid var(--glass-border); 
+  border-radius: 20px; 
+  padding: 12px; 
+  backdrop-filter: blur(20px); 
+  -webkit-backdrop-filter: blur(20px); 
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4); 
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.profile-portrait:hover { 
+  border-color: rgba(240, 75, 35, 0.4); 
+  transform: translateY(-6px); 
+  box-shadow: 0 24px 50px rgba(0,0,0,0.6), 0 0 25px rgba(240, 75, 35, 0.15); 
+}
+.profile-portrait-inner { 
+  overflow: hidden; 
+  border-radius: 12px; 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+.profile-portrait img { 
+  display: block; 
+  width: 100%; 
+  height: auto; 
+  border-radius: 12px; 
+  filter: saturate(0.95) contrast(1.04); 
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.profile-portrait:hover img { 
+  transform: scale(1.03); 
+}
+.profile-portrait figcaption { 
+  margin-top: 10px; 
+  padding: 0 4px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  color: rgba(255,255,255,.6); 
+  font: 500 9px/1.4 'DM Mono', monospace; 
+  letter-spacing: .08em; 
+}
+.profile-status-dot { 
+  display: inline-block; 
+  width: 6px; 
+  height: 6px; 
+  border-radius: 50%; 
+  background: #10b981; 
+  box-shadow: 0 0 8px #10b981; 
+  margin-right: 6px; 
+  transform: translateY(-1px); 
+}
 .manifesto-stack { grid-column: 1 / -1; margin: 0; padding-top: 16px; border-top: 1px solid var(--line); font: 500 10px/1.6 'DM Mono', monospace; letter-spacing: .08em; color: rgba(255,255,255,.55); }
 
 .projects-section { padding: 28px 0 clamp(100px, 13vw, 200px); border-top: 1px solid var(--line); }

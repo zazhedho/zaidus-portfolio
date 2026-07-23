@@ -281,7 +281,12 @@ export default function App() {
             <span className="hero-line"><i>useful.</i><span className="hero-stamp">{dict.heroStampLine1}<br />{dict.heroStampLine2}<br />{dict.heroStampLine3}</span></span>
           </h1>
           <div className="hero-footer">
-            <p>{dict.heroDesc}</p>
+            <div className="hero-footer-copy">
+              <p>{dict.heroDesc}</p>
+              <a href="https://www.linkedin.com/in/zaidus-zhuhur/" target="_blank" rel="noreferrer" className="hero-cta-button">
+                <span>{dict.contactAction}</span> <Arrow diagonal />
+              </a>
+            </div>
             <a href="#projects" className="circle-link" aria-label={dict.circleLinkAria}><Arrow /></a>
           </div>
         </section>
@@ -291,15 +296,20 @@ export default function App() {
           <div className="manifesto-content">
             <p className="manifesto-copy">{dict.approachDescPre}<em>{dict.approachDescEm}</em>{dict.approachDescPost}</p>
             <figure className="profile-portrait">
-              <img
-                src="/profile-zaidus.avif"
-                alt="Zaidus Zhuhur, Backend Engineer"
-                width="800"
-                height="1212"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>ZAIDUS ZHUHUR / BACKEND ENGINEER</figcaption>
+              <div className="profile-portrait-inner">
+                <img
+                  src="/profile-zaidus.avif"
+                  alt="Zaidus Zhuhur, Backend Engineer"
+                  width="800"
+                  height="1212"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>
+                <span><span className="profile-status-dot" />ZAIDUS ZHUHUR</span>
+                <span>BACKEND ENGINEER</span>
+              </figcaption>
             </figure>
             <p className="manifesto-stack">{dict.approachStack}</p>
           </div>
