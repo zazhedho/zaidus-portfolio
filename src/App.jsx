@@ -11,50 +11,72 @@ function Arrow({ diagonal = false }) {
 
 const t = {
   id: {
+    topbarNote: 'Backend Engineer / Spesialis Golang\nJakarta, Indonesia',
     navAbout: 'Tentang',
     navProjects: 'Project',
     navExperience: 'Pengalaman',
     navContact: 'Kontak',
     menuOpen: 'Menu',
     menuClose: 'Tutup',
+    heroKicker: 'Karya terpilih',
     heroDesc: 'Produk digital, tools, dan sistem yang dirancang dengan logika yang jernih—lalu benar-benar dirilis.',
+    circleLinkAria: 'Lihat project',
     approachTitle: '01 / Tentang',
     approachDescPre: 'Backend Engineer yang berfokus pada ',
     approachDescEm: 'sistem scalable, efisien, dan aman.',
     approachDescPost: ' Saya merancang layanan production-ready dengan Go—mencakup concurrency, microservices, database, caching, messaging, dan load balancing.',
     approachStack: 'GO · POSTGRESQL · SQL SERVER · REDIS · RABBITMQ · DOCKER',
     projectsTitleLabel: '02 / Project terpilih',
+    projectsTitle: 'Sistem nyata yang\ntelah dirilis.',
+    projectCountLabel: 'PROYEK',
     experienceLabel: '03 / Pengalaman',
-    experienceTitle: 'Systems that\nhold up.',
+    experienceTitle: 'Sistem yang\ntahan uji.',
+    experienceYears: '2022 — SEKARANG',
+    workLabel: 'PEKERJAAN',
+    heroStampLine1: 'AVAILABLE FOR WORK',
+    heroStampLine2: 'BACKEND ENGINEER',
+    heroStampLine3: '· GOLANG ·',
     capabilitiesLabel: 'Kapabilitas utama',
     educationLabel: 'Pendidikan',
-    educationValue: 'Bachelor of Physics',
-    educationPlace: 'Mataram University · 2015—2020',
+    educationValue: 'Sarjana Fisika',
+    educationPlace: 'Universitas Mataram · 2015—2020',
     languagesLabel: 'Bahasa',
-    languagesValue: 'Indonesia — Native\nEnglish — Intermediate',
+    languagesValue: 'Bahasa Indonesia — Penutur Asli\nBahasa Inggris — Menengah',
     contactLabel: '04 / Selanjutnya',
     contactTitle: 'Punya ide yang\nlayak dirilis?',
     contactAction: 'Mulai percakapan',
     liveProject: 'Live Site',
     sourceCode: 'Source Code',
     footerBackToTop: 'Kembali ke atas ↑',
+    visualCaptionLine1: 'DIRANCANG & DIBUAT',
+    visualCaptionLine2: 'DI INDONESIA',
   },
   en: {
+    topbarNote: 'Backend Engineer / Golang Specialist\nJakarta, Indonesia',
     navAbout: 'About',
     navProjects: 'Projects',
     navExperience: 'Experience',
     navContact: 'Contact',
     menuOpen: 'Menu',
     menuClose: 'Close',
+    heroKicker: 'Selected work',
     heroDesc: 'Digital products, tools, and systems designed with clear logic—and actually shipped.',
+    circleLinkAria: 'View projects',
     approachTitle: '01 / About',
     approachDescPre: 'Backend Engineer focused on ',
     approachDescEm: 'scalable, efficient, and secure systems.',
     approachDescPost: ' I design production-ready services with Go—covering concurrency, microservices, databases, caching, messaging, and load balancing.',
     approachStack: 'GO · POSTGRESQL · SQL SERVER · REDIS · RABBITMQ · DOCKER',
     projectsTitleLabel: '02 / Selected projects',
+    projectsTitle: 'Built, shipped,\nand in the wild.',
+    projectCountLabel: 'PROJECTS',
     experienceLabel: '03 / Experience',
     experienceTitle: 'Systems that\nhold up.',
+    experienceYears: '2022 — PRESENT',
+    workLabel: 'WORK',
+    heroStampLine1: 'AVAILABLE FOR WORK',
+    heroStampLine2: 'BACKEND ENGINEER',
+    heroStampLine3: '· GOLANG ·',
     capabilitiesLabel: 'Core capabilities',
     educationLabel: 'Education',
     educationValue: 'Bachelor of Physics',
@@ -67,29 +89,41 @@ const t = {
     liveProject: 'Live Site',
     sourceCode: 'Source Code',
     footerBackToTop: 'Back to top ↑',
+    visualCaptionLine1: 'DESIGNED & BUILT',
+    visualCaptionLine2: 'IN INDONESIA',
   }
 }
 
-const capabilities = [
-  'Golang & concurrency',
-  'Microservices & REST APIs',
-  'SQL optimization',
-  'Redis & server-side caching',
-  'RabbitMQ & async processing',
-  'Docker & load balancing',
-]
+const capabilities = {
+  id: [
+    'Golang & concurrency',
+    'Microservices & REST API',
+    'Optimasi SQL & database',
+    'Redis & caching sisi server',
+    'RabbitMQ & pemrosesan asinkron',
+    'Docker & load balancing',
+  ],
+  en: [
+    'Golang & concurrency',
+    'Microservices & REST APIs',
+    'SQL optimization',
+    'Redis & server-side caching',
+    'RabbitMQ & async processing',
+    'Docker & load balancing',
+  ]
+}
 
 const workExperience = [
   {
     role: { id: 'Backend Developer', en: 'Backend Developer' },
     company: 'PT Bank Rakyat Indonesia (Persero) Tbk',
-    period: '11.2025—PRESENT',
+    period: { id: '11.2025 — SEKARANG', en: '11.2025 — PRESENT' },
     location: { id: 'Jakarta, Indonesia · On-site', en: 'Jakarta, Indonesia · On-site' },
   },
   {
     role: { id: 'Software Engineer — Backend Golang', en: 'Software Engineer — Backend Golang' },
     company: 'PT Sprint Asia Technology · Full-time',
-    period: '12.2022—11.2025',
+    period: { id: '12.2022—11.2025', en: '12.2022—11.2025' },
     location: { id: 'Jakarta Selatan, Indonesia · Hybrid', en: 'South Jakarta, Indonesia · Hybrid' },
     points: {
       id: [
@@ -112,13 +146,14 @@ const workExperience = [
   },
 ]
 
-function ProjectVisual({ project }) {
+function ProjectVisual({ project, lang = 'id' }) {
+  const dict = t[lang]
   return (
     <div className={`project-visual ${project.palette}`} aria-hidden="true">
       <span className="visual-index">PROJECT / {project.number}</span>
       <span className="visual-mark">{project.mark}</span>
       <span className="visual-rule" />
-      <span className="visual-caption">DESIGNED &amp; BUILT<br />IN INDONESIA</span>
+      <span className="visual-caption">{dict.visualCaptionLine1}<br />{dict.visualCaptionLine2}</span>
       <span className="visual-orbit" />
     </div>
   )
@@ -131,7 +166,7 @@ function ProjectItem({ project, lang }) {
     <article className={`project ${project.featured ? 'project-featured' : ''}`}>
       <div className="project-inner">
         <a className="project-visual-link" href={primaryUrl} target="_blank" rel="noreferrer" aria-label={`${project.productionUrl ? dict.liveProject : dict.sourceCode}: ${project.name}`}>
-          <ProjectVisual project={project} />
+          <ProjectVisual project={project} lang={lang} />
         </a>
         <div className="project-copy">
           <div className="project-meta">
@@ -202,7 +237,7 @@ export default function App() {
           <span className="brand-dot" />
           ZAIDUS / WORKS
         </a>
-        <div className="topbar-note">Backend Engineer / Golang Specialist<br />Jakarta, Indonesia</div>
+        <div className="topbar-note" style={{ whiteSpace: 'pre-line' }}>{dict.topbarNote}</div>
         <button
           className="menu-toggle"
           type="button"
@@ -217,22 +252,24 @@ export default function App() {
           <a href="#projects" onClick={closeMenu}>{dict.navProjects}</a>
           <a href="#experience" onClick={closeMenu}>{dict.navExperience}</a>
           <a href="#contact" onClick={closeMenu}>{dict.navContact}</a>
-          <button className="language-toggle" type="button" onClick={toggleLang} aria-label={`Switch to ${lang === 'id' ? 'English' : 'Bahasa Indonesia'}`}>
-            {lang === 'id' ? 'EN' : 'ID'}
+          <button className="language-toggle" type="button" onClick={toggleLang} aria-label={`Switch language to ${lang === 'id' ? 'English' : 'Bahasa Indonesia'}`}>
+            <span className={lang === 'id' ? 'lang-active' : ''}>ID</span>
+            <span className="lang-sep">/</span>
+            <span className={lang === 'en' ? 'lang-active' : ''}>EN</span>
           </button>
         </nav>
       </header>
 
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-kicker"><span>Selected work</span><span>2025—26</span></div>
+          <div className="hero-kicker"><span>{dict.heroKicker}</span><span>2025—26</span></div>
           <h1 id="hero-title">
             Ideas made<br />
-            <span className="hero-line"><i>useful.</i><span className="hero-stamp">OPEN<br />TO BUILD<br />GOOD THINGS</span></span>
+            <span className="hero-line"><i>useful.</i><span className="hero-stamp">{dict.heroStampLine1}<br />{dict.heroStampLine2}<br />{dict.heroStampLine3}</span></span>
           </h1>
           <div className="hero-footer">
             <p>{dict.heroDesc}</p>
-            <a href="#projects" className="circle-link" aria-label="Lihat project"><Arrow /></a>
+            <a href="#projects" className="circle-link" aria-label={dict.circleLinkAria}><Arrow /></a>
           </div>
         </section>
 
@@ -258,8 +295,8 @@ export default function App() {
         <section className="projects-section" id="projects" aria-labelledby="projects-title">
           <div className="section-heading">
             <p className="section-label">{dict.projectsTitleLabel}</p>
-            <h2 id="projects-title">Built, shipped,<br />and in the wild.</h2>
-            <span className="project-count">({String(projects.length).padStart(2, '0')})</span>
+            <h2 id="projects-title" style={{ whiteSpace: 'pre-line' }}>{dict.projectsTitle}</h2>
+            <span className="project-count">({String(projects.length).padStart(2, '0')} {dict.projectCountLabel})</span>
           </div>
           <div className="project-grid">
             {projects.map((project) => <ProjectItem key={project.name} project={project} lang={lang} />)}
@@ -270,7 +307,7 @@ export default function App() {
           <div className="section-heading experience-heading">
             <p className="section-label">{dict.experienceLabel}</p>
             <h2 id="experience-title" style={{ whiteSpace: 'pre-line' }}>{dict.experienceTitle}</h2>
-            <span className="project-count">2022—NOW</span>
+            <span className="project-count">{dict.experienceYears}</span>
           </div>
 
           <div className="experience-grid">
@@ -278,8 +315,8 @@ export default function App() {
               {workExperience.map((job, index) => (
                 <article className="experience-role" key={job.company}>
                   <div className="experience-meta">
-                    <span>{String(index + 1).padStart(2, '0')} / WORK</span>
-                    <span>{job.period}</span>
+                    <span>{String(index + 1).padStart(2, '0')} / {dict.workLabel}</span>
+                    <span>{typeof job.period === 'object' ? job.period[lang] : job.period}</span>
                   </div>
                   <h3>{job.role[lang]}</h3>
                   <p className="experience-company">{job.company}</p>
@@ -297,7 +334,7 @@ export default function App() {
               <div className="career-block">
                 <p className="career-label">{dict.capabilitiesLabel}</p>
                 <ul className="capability-list">
-                  {capabilities.map((capability) => <li key={capability}>{capability}</li>)}
+                  {capabilities[lang].map((capability) => <li key={capability}>{capability}</li>)}
                 </ul>
               </div>
               <div className="career-block">
