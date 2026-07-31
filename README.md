@@ -9,7 +9,7 @@
 [![Build](https://img.shields.io/badge/build-passing-F04B23?style=flat-square)](#menjalankan-lokal)
 [![License](https://img.shields.io/badge/license-personal-D6E337?style=flat-square)](#lisensi)
 
-[Repository](https://github.com/zazhedho/zaidus-portfolio) · [Lihat Project](#project) · [Mulai](#menjalankan-lokal) · [Kustomisasi](#kustomisasi) · [Kontak](#kontak)
+[Live Portfolio](https://zaiduszh.imyourz.com/) · [Repository](https://github.com/zazhedho/zaidus-portfolio) · [Lihat Project](#project) · [Mulai](#menjalankan-lokal) · [Kustomisasi](#kustomisasi) · [Kontak](#kontak)
 
 </div>
 

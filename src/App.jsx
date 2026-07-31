@@ -277,6 +277,7 @@ export default function App() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-kicker"><span>{dict.heroKicker}</span><span>2025—26</span></div>
           <h1 id="hero-title">
+            <span className="sr-only">Zaidus Zhuhur — Backend Engineer. </span>
             Ideas made<br />
             <span className="hero-line"><i>useful.</i><span className="hero-stamp">{dict.heroStampLine1}<br />{dict.heroStampLine2}<br />{dict.heroStampLine3}</span></span>
           </h1>
