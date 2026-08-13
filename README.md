@@ -15,7 +15,7 @@
 
 ---
 
-Landing page editorial milik **Zaidus Zhuhur** untuk mengarsipkan produk digital, tools, dan sistem yang sudah benar-benar dirilis. Dibangun dengan tampilan tipografis, layout asimetris, satu aksen kuat, dan gerakan seperlunya—tanpa glassmorphism, gradient blob, atau fake statistics.
+Landing page editorial milik **Zaidus Zhuhur** untuk mengarsipkan produk digital, tools, dan sistem yang sudah benar-benar dirilis. Dibangun dengan React dan Vite menggunakan tampilan tipografis, layout asimetris, satu aksen kuat, dan gerakan seperlunya—tanpa glassmorphism, gradient blob, atau fake statistics.
 
 ## Preview
 
@@ -40,9 +40,17 @@ Landing page editorial milik **Zaidus Zhuhur** untuk mengarsipkan produk digital
 
 ## Menjalankan lokal
 
+### Prasyarat
+
+- Node.js 24 atau lebih baru
+- npm
+
+Clone repository, lalu pasang dependensi:
+
 ```bash
+git clone https://github.com/zazhedho/zaidus-portfolio.git
 cd zaidus-portfolio
-npm install
+npm ci
 npm run dev
 ```
 
@@ -59,6 +67,35 @@ Buka `http://localhost:5173`.
 | `npm run lint` | Memeriksa kualitas kode |
 
 </details>
+
+### Menjalankan dengan Docker
+
+```bash
+docker build -t zaidus-portfolio .
+docker run --rm -p 8080:80 zaidus-portfolio
+```
+
+Buka `http://localhost:8080`.
+
+## Deployment
+
+Push ke branch `main` memicu [workflow Docker](.github/workflows/docker.yml), yang:
+
+1. Membuat production build melalui Docker.
+2. Mendorong image ke GitHub Container Registry (GHCR) dengan tag `latest` dan commit SHA.
+3. Terhubung ke VPS tujuan melalui SSH.
+4. Menjalankan `docker compose pull` dan `docker compose up -d --remove-orphans`.
+
+Workflow memakai GitHub Environment `Production` dengan secret berikut:
+
+| Secret | Kegunaan |
+| :--- | :--- |
+| `VPS_HOST` | Host VPS tujuan |
+| `VPS_USER` | User SSH deployment |
+| `VPS_SSH_KEY` | Private key SSH deployment |
+
+Simpan nilai secret hanya di GitHub Actions. Jangan menaruh private key, token,
+password, atau file `.env` di repository.
 
 ## Kustomisasi
 
@@ -107,6 +144,9 @@ Kontak saat ini menggunakan `zaiduszhuhur@gmail.com` dan profil LinkedIn di bawa
 zaidus-portfolio/
 ├── public/
 │   └── favicon.svg
+├── .github/
+│   └── workflows/docker.yml # build, push, dan deploy
+├── Dockerfile               # build dan runtime image
 ├── src/
 │   ├── App.jsx        # struktur halaman
 │   ├── projects.js    # data project
