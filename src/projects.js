@@ -81,7 +81,7 @@ export const projects = [
       id: 'API wilayah Indonesia yang rapi, cepat, dan mudah dijelajahi langsung dari browser.',
       en: 'A neat, fast, and easy-to-explore Indonesian region API straight from your browser.'
     },
-    productionUrl: 'https://location-service-do.vercel.app/',
+    productionUrl: 'https://indonesia.imyourz.com/',
     repositoryUrl: 'https://github.com/zazhedho/location-service',
     palette: 'citron',
     mark: 'LOC',
@@ -112,5 +112,46 @@ export const projects = [
     repositoryUrl: 'https://github.com/zazhedho/safety-riding',
     palette: 'lavender',
     mark: 'SR',
+  },
+  {
+    number: '09',
+    name: 'Family Timeline',
+    kind: { id: 'Personal Utility', en: 'Personal Utility' },
+    year: '2026',
+    description: {
+      id: 'Timeline keluarga dengan penghitung usia realtime berbasis zona waktu WIB.',
+      en: 'A family timeline with live age counters powered by the WIB timezone.'
+    },
+    productionUrl: 'https://family.imyourz.com/',
+    repositoryUrl: 'https://github.com/zazhedho/family-timeline',
+    palette: 'citron',
+    mark: 'FT',
+  },
+  {
+    number: '10',
+    name: 'Format Forge',
+    kind: { id: 'Developer Tools', en: 'Developer Tools' },
+    year: '2026',
+    description: {
+      id: 'Tool lokal untuk memformat JSON dan data terstruktur dengan cepat.',
+      en: 'A local-first tool for formatting JSON and structured data quickly.'
+    },
+    productionUrl: 'https://jsonformatter.imyourz.com',
+    repositoryUrl: 'https://github.com/zazhedho/format-forge',
+    palette: 'cobalt',
+    mark: 'FF',
+  },
+  {
+    number: '11',
+    name: 'Kota Siaga',
+    kind: { id: 'Civic Data Backend', en: 'Civic Data Backend' },
+    year: '2026',
+    description: {
+      id: 'Backend untuk lokasi, cuaca, peringatan, gempa, dan pencarian fasilitas kesehatan.',
+      en: 'A backend for locations, weather, warnings, earthquakes, and health-facility search.'
+    },
+    repositoryUrl: 'https://github.com/zazhedho/kota-siaga',
+    palette: 'lavender',
+    mark: 'KS',
   },
 ]

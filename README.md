@@ -34,9 +34,12 @@ Landing page editorial milik **Zaidus Zhuhur** untuk mengarsipkan produk digital
 | 03 | **Yourz Gift** | [Live ↗](https://gift.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/yourz-gift) |
 | 04 | **Vendor Management System** | [Live ↗](https://vms-astrantb.online/) | [GitHub ↗](https://github.com/zazhedho/vendor-management-system) |
 | 05 | **Songket Dashboard** | [Live ↗](https://songketdashboard.com/) | [GitHub ↗](https://github.com/zazhedho/service-songket) |
-| 06 | **Location Service** | [Live ↗](https://location-service-do.vercel.app/) | [GitHub ↗](https://github.com/zazhedho/location-service) |
+| 06 | **Location Service** | [Live ↗](https://indonesia.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/location-service) |
 | 07 | **Anniversary Site** | [Live ↗](https://zaiduszh.tech/) | [GitHub ↗](https://github.com/zazhedho/anniversary-site) |
 | 08 | **Safety Riding** | — | [GitHub ↗](https://github.com/zazhedho/safety-riding) |
+| 09 | **Family Timeline** | [Live ↗](https://family.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/family-timeline) |
+| 10 | **Format Forge** | [Live ↗](https://jsonformatter.imyourz.com) | [GitHub ↗](https://github.com/zazhedho/format-forge) |
+| 11 | **Kota Siaga** | — | [GitHub ↗](https://github.com/zazhedho/kota-siaga) |
 
 ## Menjalankan lokal
 
