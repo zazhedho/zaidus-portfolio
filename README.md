@@ -32,13 +32,13 @@ Landing page editorial milik **Zaidus Zhuhur** untuk mengarsipkan produk digital
 | 01 | **3ZA Digital** | [Live ↗](https://digital.zzaz.tech/) | [GitHub ↗](https://github.com/zazhedho/3za-digital) |
 | 02 | **Yourz Itinerary** | [Live ↗](https://yourz-itinerary.vercel.app/) | [GitHub ↗](https://github.com/zazhedho/yourz-itinerary) |
 | 03 | **Yourz Gift** | [Live ↗](https://gift.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/yourz-gift) |
-| 04 | **Vendor Management System** | [Live ↗](https://vms-astrantb.online/) | [GitHub ↗](https://github.com/zazhedho/vendor-management-system) |
-| 05 | **Songket Dashboard** | [Live ↗](https://songketdashboard.com/) | [GitHub ↗](https://github.com/zazhedho/service-songket) |
-| 06 | **Location Service** | [Live ↗](https://indonesia.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/location-service) |
+| 04 | **Format Forge** | [Live ↗](https://jsonformatter.imyourz.com) | [GitHub ↗](https://github.com/zazhedho/format-forge) |
+| 05 | **Location Service** | [Live ↗](https://indonesia.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/location-service) |
+| 06 | **Songket Dashboard** | [Live ↗](https://songketdashboard.com/) | [GitHub ↗](https://github.com/zazhedho/service-songket) |
 | 07 | **Anniversary Site** | [Live ↗](https://zaiduszh.tech/) | [GitHub ↗](https://github.com/zazhedho/anniversary-site) |
 | 08 | **Safety Riding** | — | [GitHub ↗](https://github.com/zazhedho/safety-riding) |
 | 09 | **Family Timeline** | [Live ↗](https://family.imyourz.com/) | [GitHub ↗](https://github.com/zazhedho/family-timeline) |
-| 10 | **Format Forge** | [Live ↗](https://jsonformatter.imyourz.com) | [GitHub ↗](https://github.com/zazhedho/format-forge) |
+| 10 | **Vendor Management System** | [Live ↗](https://vms-astrantb.online/) | [GitHub ↗](https://github.com/zazhedho/vendor-management-system) |
 | 11 | **Kota Siaga** | — | [GitHub ↗](https://github.com/zazhedho/kota-siaga) |
 
 ## Menjalankan lokal

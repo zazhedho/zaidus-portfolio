@@ -29,6 +29,9 @@ const t = {
     projectsTitleLabel: '02 / Project terpilih',
     projectsTitle: 'Sistem nyata yang\ntelah dirilis.',
     projectCountLabel: 'PROYEK',
+    projectArchiveLabel: 'ARSIP PROJECT',
+    showMoreProjects: 'Lihat project lainnya',
+    showLessProjects: 'Sembunyikan',
     experienceLabel: '03 / Pengalaman',
     experienceTitle: 'Pengalaman\nprofesional.',
     experienceYears: '2022 — SEKARANG',
@@ -70,6 +73,9 @@ const t = {
     projectsTitleLabel: '02 / Selected projects',
     projectsTitle: 'Built, shipped,\nand in the wild.',
     projectCountLabel: 'PROJECTS',
+    projectArchiveLabel: 'PROJECT ARCHIVE',
+    showMoreProjects: 'View more projects',
+    showLessProjects: 'Show less',
     experienceLabel: '03 / Experience',
     experienceTitle: 'Professional\nexperience.',
     experienceYears: '2022 — PRESENT',
@@ -203,6 +209,9 @@ function ProjectItem({ project, lang }) {
   )
 }
 
+const visibleProjects = projects.slice(0, 5)
+const archivedProjects = projects.slice(5)
+
 export default function App() {
   const [time, setTime] = useState('')
   const [lang, setLang] = useState('en') // 'en' or 'id'
@@ -323,8 +332,23 @@ export default function App() {
             <span className="project-count">({String(projects.length).padStart(2, '0')} {dict.projectCountLabel})</span>
           </div>
           <div className="project-grid">
-            {projects.map((project) => <ProjectItem key={project.name} project={project} lang={lang} />)}
+            {visibleProjects.map((project) => <ProjectItem key={project.name} project={project} lang={lang} />)}
           </div>
+          {archivedProjects.length > 0 && (
+            <details className="project-archive">
+              <summary className="projects-toggle">
+                <span>{dict.projectArchiveLabel} / {String(archivedProjects.length).padStart(2, '0')}</span>
+                <span className="projects-toggle-action">
+                  <span className="projects-toggle-more">{dict.showMoreProjects}</span>
+                  <span className="projects-toggle-less">{dict.showLessProjects}</span>
+                  <Arrow />
+                </span>
+              </summary>
+              <div className="project-grid project-grid-archive">
+                {archivedProjects.map((project) => <ProjectItem key={project.name} project={project} lang={lang} />)}
+              </div>
+            </details>
+          )}
         </section>
 
         <section className="experience" id="experience" aria-labelledby="experience-title">

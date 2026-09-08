@@ -46,34 +46,20 @@ export const projects = [
   },
   {
     number: '04',
-    name: 'Vendor Management System',
-    kind: { id: 'Sistem Operasional', en: 'Operations System' },
+    name: 'Format Forge',
+    kind: { id: 'Developer Tools', en: 'Developer Tools' },
     year: '2026',
     description: {
-      id: 'Sistem terpusat untuk mengelola vendor, akses pengguna, dan proses operasional perusahaan.',
-      en: 'A centralized system for managing vendors, user access, and company operations.'
+      id: 'Tool lokal untuk memformat JSON dan data terstruktur dengan cepat.',
+      en: 'A local-first tool for formatting JSON and structured data quickly.'
     },
-    productionUrl: 'https://vms-astrantb.online/',
-    repositoryUrl: 'https://github.com/zazhedho/vendor-management-system',
-    palette: 'lavender',
-    mark: 'VMS',
+    productionUrl: 'https://jsonformatter.imyourz.com',
+    repositoryUrl: 'https://github.com/zazhedho/format-forge',
+    palette: 'cobalt',
+    mark: 'FF',
   },
   {
     number: '05',
-    name: 'Songket Dashboard',
-    kind: { id: 'Dashboard Data', en: 'Data Dashboard' },
-    year: '2026',
-    description: {
-      id: 'Dashboard untuk menyajikan data Songket secara ringkas, terstruktur, dan mudah dipantau.',
-      en: 'A dashboard that presents Songket data in a concise, structured, and monitorable format.'
-    },
-    productionUrl: 'https://songketdashboard.com/',
-    repositoryUrl: 'https://github.com/zazhedho/service-songket',
-    palette: 'cobalt',
-    mark: 'SD',
-  },
-  {
-    number: '06',
     name: 'Location Service',
     kind: { id: 'Public API & Explorer', en: 'Public API & Explorer' },
     year: '2026',
@@ -85,6 +71,20 @@ export const projects = [
     repositoryUrl: 'https://github.com/zazhedho/location-service',
     palette: 'citron',
     mark: 'LOC',
+  },
+  {
+    number: '06',
+    name: 'Songket Dashboard',
+    kind: { id: 'Dashboard Data', en: 'Data Dashboard' },
+    year: '2026',
+    description: {
+      id: 'Dashboard untuk menyajikan data Songket secara ringkas, terstruktur, dan mudah dipantau.',
+      en: 'A dashboard that presents Songket data in a concise, structured, and monitorable format.'
+    },
+    productionUrl: 'https://songketdashboard.com/',
+    repositoryUrl: 'https://github.com/zazhedho/service-songket',
+    palette: 'cobalt',
+    mark: 'SD',
   },
   {
     number: '07',
@@ -129,17 +129,17 @@ export const projects = [
   },
   {
     number: '10',
-    name: 'Format Forge',
-    kind: { id: 'Developer Tools', en: 'Developer Tools' },
+    name: 'Vendor Management System',
+    kind: { id: 'Sistem Operasional', en: 'Operations System' },
     year: '2026',
     description: {
-      id: 'Tool lokal untuk memformat JSON dan data terstruktur dengan cepat.',
-      en: 'A local-first tool for formatting JSON and structured data quickly.'
+      id: 'Sistem terpusat untuk mengelola vendor, akses pengguna, dan proses operasional perusahaan.',
+      en: 'A centralized system for managing vendors, user access, and company operations.'
     },
-    productionUrl: 'https://jsonformatter.imyourz.com',
-    repositoryUrl: 'https://github.com/zazhedho/format-forge',
-    palette: 'cobalt',
-    mark: 'FF',
+    productionUrl: 'https://vms-astrantb.online/',
+    repositoryUrl: 'https://github.com/zazhedho/vendor-management-system',
+    palette: 'lavender',
+    mark: 'VMS',
   },
   {
     number: '11',
