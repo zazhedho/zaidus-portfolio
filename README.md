@@ -83,15 +83,18 @@ Buka `http://localhost:8080`.
 ## Deployment
 
 Push ke `main` memicu [workflow build](.github/workflows/build.yml), yang
-membangun image AMD64 dan ARM64 lalu menerbitkan tag `latest`, `latest-amd64`,
-`latest-arm64`, dan tag commit ke GHCR.
+membangun image multi-arsitektur AMD64 dan ARM64 lalu menerbitkan tag bergerak
+`latest` dan tag commit SHA ke GHCR. Setelah build sukses, workflow deploy
+otomatis mengirim image SHA yang sama ke target aktif.
 
-Untuk deploy, buka **Actions → Deploy Portfolio → Run workflow**, pilih branch
-`main`, lalu pilih `oci-arm64` atau `vps-amd64`. Workflow memakai SSH untuk
-menjalankan `docker compose pull` dan `docker compose up` pada VPS tujuan.
-Tunggu workflow build berhasil sebelum menjalankan deploy.
-Compose memilih tag arsitektur sesuai target. Source aplikasi tetap di GitHub
-Actions runner; VPS hanya menyimpan `compose.yaml` dan image hasil build.
+Target otomatis diatur lewat GitHub Environment Variable `DEPLOY_TARGET` pada
+environment `production`: `oci-arm64` atau `vps-amd64`. Jika variable belum
+diatur, target default `oci-arm64`. Untuk deploy manual satu kali, buka
+**Actions → Deploy Portfolio → Run workflow**, pilih branch `main` dan target.
+Workflow memeriksa build untuk commit itu dan arsitektur VPS sebelum menjalankan
+Compose. User deploy harus punya akses `sudo -n` ke Docker. Source aplikasi
+tetap di GitHub Actions runner; VPS hanya menerima image hasil build dan memakai
+`compose.yaml` yang sudah ada.
 
 Workflow memakai GitHub Environment `production` dengan secret berikut:
 
@@ -100,13 +103,14 @@ Workflow memakai GitHub Environment `production` dengan secret berikut:
 | `OCI_VPS_HOST`, `OCI_VPS_USER`, `OCI_VPS_SSH_KEY` | OCI ARM VPS |
 | `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` | VPS AMD64 |
 
-Gunakan SSH key deployment terpisah. Simpan private key hanya sebagai GitHub
-Environment secret dan pasang public key-nya di VPS. Host diambil dari secret
-target; host key dipindai saat deploy lalu dicocokkan selama sesi SSH. Untuk
-server baru, tambahkan pilihan target dan secret host/user/key-nya. Pemindaian
-ini tidak memverifikasi fingerprint lewat saluran terpisah, jadi pin fingerprint
-di GitHub Variables jika ingin perlindungan MITM yang lebih kuat. Jangan menaruh
-private key, token, password, atau file `.env` di repository.
+Host, user, dan private key tetap di GitHub Environment secret. Workflow
+mempelajari host key saat berjalan melalui `ssh-keyscan` dan mewajibkan host-key
+checking untuk koneksi SSH. Tidak ada fingerprint Variable; scan runtime tidak
+memverifikasi identitas host secara independen dan berisiko MITM saat scan.
+Gunakan SSH key deployment terpisah; simpan private key hanya di GitHub
+Environment secret dan pasang public key-nya di VPS. Untuk server baru, tambahkan
+opsi target, pemetaan arsitektur, serta secret host/user/key. Jangan menaruh
+host, private key, token, password, atau file `.env` di repository.
 
 ## Kustomisasi
 
@@ -158,7 +162,7 @@ zaidus-portfolio/
 ├── .github/
 │   └── workflows/
 │       ├── build.yml         # build AMD64 + ARM64 dan push ke GHCR
-│       └── deploy.yml        # pilih VPS tujuan
+│       └── deploy.yml        # auto-deploy setelah build main sukses
 ├── Dockerfile               # build dan runtime image
 ├── compose.yaml             # konfigurasi runtime image
 ├── src/
