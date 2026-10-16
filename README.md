@@ -82,36 +82,31 @@ Buka `http://localhost:8080`.
 
 ## Deployment
 
-Push ke branch `main` memicu [workflow Docker](.github/workflows/docker.yml), yang:
+Push ke `main` memicu [workflow build](.github/workflows/build.yml), yang
+membangun image AMD64 dan ARM64 lalu menerbitkan tag `latest`, `latest-amd64`,
+`latest-arm64`, dan tag commit ke GHCR.
 
-1. Membuat image ARM64 untuk OCI dan mengunggah tag `latest-arm64` serta tag commit berakhiran `-arm64`.
-2. Terhubung ke OCI lewat SSH.
-3. Menjalankan `sudo docker compose pull` dan `sudo docker compose up -d --remove-orphans`.
+Untuk deploy, buka **Actions → Deploy Portfolio → Run workflow**, pilih branch
+`main`, lalu pilih `oci-arm64` atau `vps-amd64`. Workflow memakai SSH untuk
+menjalankan `docker compose pull` dan `docker compose up` pada VPS tujuan.
+Tunggu workflow build berhasil sebelum menjalankan deploy.
+Compose memilih tag arsitektur sesuai target. Source aplikasi tetap di GitHub
+Actions runner; VPS hanya menyimpan `compose.yaml` dan image hasil build.
 
-Sebelum deploy pertama, salin `compose.yaml` sekali ke
-`/opt/apps/zaidus-portfolio` di VPS. GitHub Actions membangun image dari source
-di runner lalu mengirim image ke GHCR; VPS hanya menarik image dan menyimpan
-Compose, tanpa salinan source aplikasi.
-Compose default-nya ARM64. Untuk build AMD64, jalankan workflow manual dan pilih
-`amd64`; image memakai tag `latest-amd64` dan build ini tidak men-deploy ke OCI.
-Di host AMD64, pilih image tersebut saat menjalankan Compose:
-
-```sh
-sudo env PORTFOLIO_ARCH=amd64 docker compose pull
-sudo env PORTFOLIO_ARCH=amd64 docker compose up -d
-```
-
-Workflow memakai GitHub Environment `OCI` dengan secret berikut:
+Workflow memakai GitHub Environment `production` dengan secret berikut:
 
 | Secret | Kegunaan |
 | :--- | :--- |
-| `OCI_VPS_HOST` | Host VPS tujuan |
-| `OCI_VPS_USER` | User SSH deployment |
-| `OCI_VPS_SSH_KEY` | Private key SSH deployment |
+| `OCI_VPS_HOST`, `OCI_VPS_USER`, `OCI_VPS_SSH_KEY` | OCI ARM VPS |
+| `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` | VPS AMD64 |
 
 Gunakan SSH key deployment terpisah. Simpan private key hanya sebagai GitHub
-Environment secret dan pasang public key-nya di VPS. Jangan menaruh private key,
-token, password, atau file `.env` di repository.
+Environment secret dan pasang public key-nya di VPS. Host diambil dari secret
+target; host key dipindai saat deploy lalu dicocokkan selama sesi SSH. Untuk
+server baru, tambahkan pilihan target dan secret host/user/key-nya. Pemindaian
+ini tidak memverifikasi fingerprint lewat saluran terpisah, jadi pin fingerprint
+di GitHub Variables jika ingin perlindungan MITM yang lebih kuat. Jangan menaruh
+private key, token, password, atau file `.env` di repository.
 
 ## Kustomisasi
 
@@ -161,8 +156,11 @@ zaidus-portfolio/
 ├── public/
 │   └── favicon.svg
 ├── .github/
-│   └── workflows/docker.yml # build, push, dan deploy
+│   └── workflows/
+│       ├── build.yml         # build AMD64 + ARM64 dan push ke GHCR
+│       └── deploy.yml        # pilih VPS tujuan
 ├── Dockerfile               # build dan runtime image
+├── compose.yaml             # konfigurasi runtime image
 ├── src/
 │   ├── App.jsx        # struktur halaman
 │   ├── projects.js    # data project
