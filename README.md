@@ -84,21 +84,34 @@ Buka `http://localhost:8080`.
 
 Push ke branch `main` memicu [workflow Docker](.github/workflows/docker.yml), yang:
 
-1. Membuat production build melalui Docker.
-2. Mendorong image ke GitHub Container Registry (GHCR) dengan tag `latest` dan commit SHA.
-3. Terhubung ke VPS tujuan melalui SSH.
-4. Menjalankan `docker compose pull` dan `docker compose up -d --remove-orphans`.
+1. Membuat image ARM64 untuk OCI dan mengunggah tag `latest-arm64` serta tag commit berakhiran `-arm64`.
+2. Terhubung ke OCI lewat SSH.
+3. Menjalankan `sudo docker compose pull` dan `sudo docker compose up -d --remove-orphans`.
 
-Workflow memakai GitHub Environment `Production` dengan secret berikut:
+Sebelum deploy pertama, salin `compose.yaml` sekali ke
+`/opt/apps/zaidus-portfolio` di VPS. GitHub Actions membangun image dari source
+di runner lalu mengirim image ke GHCR; VPS hanya menarik image dan menyimpan
+Compose, tanpa salinan source aplikasi.
+Compose default-nya ARM64. Untuk build AMD64, jalankan workflow manual dan pilih
+`amd64`; image memakai tag `latest-amd64` dan build ini tidak men-deploy ke OCI.
+Di host AMD64, pilih image tersebut saat menjalankan Compose:
+
+```sh
+sudo env PORTFOLIO_ARCH=amd64 docker compose pull
+sudo env PORTFOLIO_ARCH=amd64 docker compose up -d
+```
+
+Workflow memakai GitHub Environment `OCI` dengan secret berikut:
 
 | Secret | Kegunaan |
 | :--- | :--- |
-| `VPS_HOST` | Host VPS tujuan |
-| `VPS_USER` | User SSH deployment |
-| `VPS_SSH_KEY` | Private key SSH deployment |
+| `OCI_VPS_HOST` | Host VPS tujuan |
+| `OCI_VPS_USER` | User SSH deployment |
+| `OCI_VPS_SSH_KEY` | Private key SSH deployment |
 
-Simpan nilai secret hanya di GitHub Actions. Jangan menaruh private key, token,
-password, atau file `.env` di repository.
+Gunakan SSH key deployment terpisah. Simpan private key hanya sebagai GitHub
+Environment secret dan pasang public key-nya di VPS. Jangan menaruh private key,
+token, password, atau file `.env` di repository.
 
 ## Kustomisasi
 

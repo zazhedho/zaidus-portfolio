@@ -1,12 +1,21 @@
-name: Build & Deploy Portfolio
+name: Build & Deploy Portfolio to OCI
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      arch:
+        description: Target architecture
+        type: choice
+        required: true
+        default: arm64
+        options:
+          - arm64
+          - amd64
 
 concurrency:
-  group: portfolio-production
+  group: portfolio-oci
   cancel-in-progress: true
 
 permissions:
@@ -25,30 +34,35 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
       - name: Build and push frontend image
         uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
           push: true
+          platforms: linux/${{ inputs.arch || 'arm64' }}
           tags: |
-            ghcr.io/${{ github.repository_owner }}/zaidus-portfolio:latest
-            ghcr.io/${{ github.repository_owner }}/zaidus-portfolio:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/zaidus-portfolio:latest-${{ inputs.arch || 'arm64' }}
+            ghcr.io/${{ github.repository_owner }}/zaidus-portfolio:${{ github.sha }}-${{ inputs.arch || 'arm64' }}
 
   deploy:
     needs: build
+    if: github.ref == 'refs/heads/main' && inputs.arch != 'amd64'
     runs-on: ubuntu-latest
-    environment: Production
+    environment: OCI
     steps:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
+          host: ${{ secrets.OCI_VPS_HOST }}
+          username: ${{ secrets.OCI_VPS_USER }}
+          key: ${{ secrets.OCI_VPS_SSH_KEY }}
           script: |
             set -eu
             cd /opt/apps/zaidus-portfolio
-            docker compose config --services
-            docker compose pull
-            docker compose up -d --remove-orphans
+            sudo -n env PORTFOLIO_ARCH=arm64 docker compose config --services
+            sudo -n env PORTFOLIO_ARCH=arm64 docker compose pull
+            sudo -n env PORTFOLIO_ARCH=arm64 docker compose up -d --remove-orphans
