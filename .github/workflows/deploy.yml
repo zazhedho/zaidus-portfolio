@@ -158,16 +158,16 @@ jobs:
               image: ${image_ref}
           EOF
 
-          docker compose -f "$compose_file" -f "$override_file" config --quiet
-          docker compose -f "$compose_file" -f "$override_file" pull portfolio
-          docker compose -f "$compose_file" -f "$override_file" up -d --no-deps portfolio
+          sudo -n docker compose -f "$compose_file" -f "$override_file" config --quiet
+          sudo -n docker compose -f "$compose_file" -f "$override_file" pull portfolio
+          sudo -n docker compose -f "$compose_file" -f "$override_file" up -d --no-deps portfolio
 
-          container_id="$(docker compose -f "$compose_file" -f "$override_file" ps -q portfolio)"
-          if [[ -z "$container_id" || "$(docker inspect --format '{{.State.Status}}' "$container_id")" != running ]]; then
+          container_id="$(sudo -n docker compose -f "$compose_file" -f "$override_file" ps -q portfolio)"
+          if [[ -z "$container_id" || "$(sudo -n docker inspect --format '{{.State.Status}}' "$container_id")" != running ]]; then
             echo "Portfolio container is not running after deployment."
             exit 1
           fi
-          if [[ "$(docker inspect --format '{{.Config.Image}}' "$container_id")" != "$image_ref" ]]; then
+          if [[ "$(sudo -n docker inspect --format '{{.Config.Image}}' "$container_id")" != "$image_ref" ]]; then
             echo "Portfolio container is not using the requested image."
             exit 1
           fi
