@@ -82,7 +82,7 @@ Buka `http://localhost:8080`.
 
 ## Deployment
 
-Push ke `main` memicu [workflow build](.github/workflows/build.yml), yang
+Push perubahan kode ke `main` memicu [workflow build](.github/workflows/build.yml), yang
 membangun image multi-arsitektur AMD64 dan ARM64 lalu menerbitkan tag bergerak
 `latest` dan tag commit SHA ke GHCR. Setelah build sukses, workflow deploy
 otomatis mengirim image SHA yang sama ke target aktif.
